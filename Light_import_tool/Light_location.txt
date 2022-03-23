@@ -1,0 +1,42 @@
+
+{
+	"pointlights": [
+		{
+			"title":"Point1",
+			"location":[500.0,600.0,700.0],
+			"intensity":100.0
+		},
+		{
+			"title":"Point2",
+			"location":[50.0,60.0,50.0],
+			"intensity":200.0
+
+		}
+	],
+	"spotlights": [
+		{
+			"title":"Spot1",
+			"location":[300.0,400.0,500.0],
+			"intensity":100.0
+		},
+		{
+			"title":"Spot2",
+			"location":[60.0,30.0,20.0],
+			"intensity":200.0
+
+		}
+	],
+	"rectlights": [
+		{
+			"title":"Rect1",
+			"location":[100.0,200.0,300.0],
+			"intensity":100.0
+		},
+		{
+			"title":"Rect2",
+			"location":[10.0,70.0,90.0],
+			"intensity":200.0
+
+		}
+	]
+}
