@@ -1,1 +1,28 @@
 
+import unreal
+menus = unreal.ToolMenus.get()
+
+name_of_tools = {"TestButton":"toolname"}
+
+owner_name = "Qube"
+tool_owner = unreal.ToolMenuOwner(owner_name)
+# menus.unregister_owner_by_name
+play_toolbar = "LevelEditor.LevelEditorToolBar.PlayToolBar"
+window_toolbar = "LevelEditor.MainMenu.Tools"
+
+play_menu = menus.find_menu(play_toolbar)
+window_menu = menus.find_menu(window_toolbar)
+window_menu.add_section("Qube Tools", "Qube Tools", "", unreal.ToolMenuInsertType.FIRST)
+
+for button_name,tool_name in name_of_tools.items():
+    tool_open_command = ("import unreal;asset_ref = unreal.load_asset('/Game/Tools/%s');unreal.EditorUtilitySubsystem().spawn_and_register_tab(asset_ref)" % tool_name)
+    #making to play menu button
+    play_entry = unreal.ToolMenuEntry(owner=tool_owner, type=unreal.MultiBlockType.TOOL_BAR_BUTTON,)
+    play_entry.set_label(button_name)
+    play_entry.set_string_command(unreal.ToolMenuStringCommandType.PYTHON,"",tool_open_command)
+    play_entry.set_icon("EditorStyle","TextureEditor.RedChannel")
+    play_menu.add_menu_entry(button_name,play_entry)
+    #making windows menu button
+    window_entry = unreal.ToolMenuEntryExtensions.init_menu_entry(owner_name, "myEntryUniqueNmae", button_name, "Qube tools", unreal.ToolMenuStringCommandType.PYTHON, "", tool_open_command)
+    window_menu.add_menu_entry("Qube Tools",window_entry)
+menus.refresh_all_widgets()
